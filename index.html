@@ -1,11 +1,15 @@
 <html>
+
 <head>
     <title>Html-Qrcode Demo</title>
+
 <body>
     <div id="qr-reader" style="width:500px"></div>
     <div id="qr-reader-results"></div>
 </body>
 <script src="https://unpkg.com/html5-qrcode"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     function docReady(fn) {
         // see if DOM is already available
@@ -27,6 +31,12 @@
                 lastResult = decodedText;
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Do you want to continue',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
             }
         }
 
@@ -36,4 +46,5 @@
     });
 </script>
 </head>
+
 </html>
