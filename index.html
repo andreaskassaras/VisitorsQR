@@ -4,8 +4,12 @@
     <title>Html-Qrcode Demo</title>
 
 <body>
-    <div id="qr-reader" style="width:500px"></div>
-    <div id="qr-reader-results"></div>
+    <div class="flex-container">
+        <div class="row">
+            <div id="qr-reader" style="width:500px"></div>
+            <div id="qr-reader-results"></div>
+        </div>
+    </div>
 </body>
 <script src="https://unpkg.com/html5-qrcode"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -33,7 +37,7 @@
                 console.log(`Scan result ${decodedText}`, decodedResult);
                 Swal.fire({
                     title: 'Success!',
-                    text: 'You code is ' + decodedResult,
+                    text: 'You code is ' + decodedText,
                     icon: 'success',
                     confirmButtonText: 'OK!'
                 })
