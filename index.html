@@ -22,7 +22,7 @@
             if (document.readyState === "complete"
                 || document.readyState === "interactive") {
                 // call on next available tick
-                setTimeout(fn, 1);
+                setTimeout(fn, 5);
             } else {
                 document.addEventListener("DOMContentLoaded", fn);
             }
@@ -55,9 +55,7 @@
                             text: decodedText,
                             icon: 'error',
                             confirmButtonText: 'OK!',
-                            confirmButtonColor: '#198754',
-                            timer: 3000,
-                            timerProgressBar: true
+                            confirmButtonColor: '#198754'
                         })
                     } else {
                         //alert("Accepted")
@@ -66,9 +64,7 @@
                             text: decodedText,
                             icon: 'success',
                             confirmButtonText: 'OK!',
-                            confirmButtonColor: '#198754',
-                            timer: 3000,
-                            timerProgressBar: true
+                            confirmButtonColor: '#198754'
                         })
 
                     }
