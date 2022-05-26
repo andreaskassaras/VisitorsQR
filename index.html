@@ -33,7 +33,7 @@
         var responseText;
 
         var html5QrcodeScanner = new Html5QrcodeScanner(
-            "qr-reader", { fps: 10, qrbox: 250 });
+            "qr-reader", { fps: 1, qrbox: 250 });
 
         function onScanSuccess(decodedText, decodedResult) {
 
@@ -54,6 +54,7 @@
             xhr.send();
 
             if (responseText === 0) {
+                alert("Reject")
                 Swal.fire({
                     title: 'Reject',
                     text: decodedText,
@@ -61,6 +62,7 @@
                     confirmButtonText: 'OK!'
                 })
             } else {
+                alert("Accepted")
                 Swal.fire({
                     title: 'Accepted',
                     text: decodedText,
