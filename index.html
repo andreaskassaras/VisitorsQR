@@ -30,15 +30,36 @@
     docReady(function () {
         var resultContainer = document.getElementById('qr-reader-results');
         var lastResult, countResults = 0;
+        var responseText, name, surname;
         function onScanSuccess(decodedText, decodedResult) {
+
+            var url = "https://api.konkat.gr/get_visitor/" + decodedText;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    console.log(xhr.status);
+                    console.log(xhr.responseText);
+                    responseText = xhr.responseText;
+                    var obj = JSON.parse(responseText);
+                    alert(obj.Name);
+                }
+
+            };
+
+            xhr.send();
+
             if (decodedText !== lastResult) {
                 ++countResults;
                 lastResult = decodedText;
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
+
                 Swal.fire({
-                    title: 'Success!',
-                    text: 'You code is ' + decodedText,
+                    title: decodedText,
+                    text: 'You code is ' + responseText,
                     icon: 'success',
                     confirmButtonText: 'OK!'
                 })
