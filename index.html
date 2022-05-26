@@ -14,19 +14,19 @@
 </body>
 
 <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"> type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"> type = "text/javascript" ></script>
 
 <script>
-    function docReady(fn) {
-        // see if DOM is already available
-        if (document.readyState === "complete"
-            || document.readyState === "interactive") {
-            // call on next available tick
-            setTimeout(fn, 1);
-        } else {
-            document.addEventListener("DOMContentLoaded", fn);
+        function docReady(fn) {
+            // see if DOM is already available
+            if (document.readyState === "complete"
+                || document.readyState === "interactive") {
+                // call on next available tick
+                setTimeout(fn, 1);
+            } else {
+                document.addEventListener("DOMContentLoaded", fn);
+            }
         }
-    }
 
     docReady(function () {
         var resultContainer = document.getElementById('qr-reader-results');
@@ -55,7 +55,9 @@
                             text: decodedText,
                             icon: 'error',
                             confirmButtonText: 'OK!',
-                            confirmButtonColor: '#198754'
+                            confirmButtonColor: '#198754',
+                            timer: 3000,
+                            timerProgressBar: true
                         })
                     } else {
                         //alert("Accepted")
@@ -64,7 +66,9 @@
                             text: decodedText,
                             icon: 'success',
                             confirmButtonText: 'OK!',
-                            confirmButtonColor: '#198754'
+                            confirmButtonColor: '#198754',
+                            timer: 3000,
+                            timerProgressBar: true
                         })
 
                     }
