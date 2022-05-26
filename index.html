@@ -31,6 +31,10 @@
         var resultContainer = document.getElementById('qr-reader-results');
         var lastResult, countResults = 0;
         var responseText;
+
+        var html5QrcodeScanner = new Html5QrcodeScanner(
+            "qr-reader", { fps: 10, qrbox: 250 });
+            
         function onScanSuccess(decodedText, decodedResult) {
 
             var url = "https://api.konkat.gr/get_visitor/" + decodedText;
@@ -79,10 +83,10 @@
                     confirmButtonText: 'OK!'
                 })
             }
+
+            html5QrcodeScanner.clear();
         }
 
-        var html5QrcodeScanner = new Html5QrcodeScanner(
-            "qr-reader", { fps: 10, qrbox: 250 });
         html5QrcodeScanner.render(onScanSuccess);
     });
 </script>
