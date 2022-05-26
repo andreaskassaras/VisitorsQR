@@ -46,31 +46,31 @@
                 if (xhr.readyState === 4) {
                     console.log(xhr.status);
                     console.log(xhr.responseText);
-                    responseText = xhr.responseText;
+
+
+                    if (xhr.responseText == 0) {
+                        //alert("Reject")
+                        Swal.fire({
+                            title: 'Reject',
+                            text: decodedText,
+                            icon: 'error',
+                            confirmButtonText: 'OK!'
+                        })
+                    } else {
+                        //alert("Accepted")
+                        Swal.fire({
+                            title: 'Accepted',
+                            text: decodedText,
+                            icon: 'success',
+                            confirmButtonText: 'OK!'
+                        })
+
+                    }
                 }
 
             };
 
             xhr.send();
-
-            if (responseText == 0) {
-                //alert("Reject")
-                Swal.fire({
-                    title: 'Reject',
-                    text: decodedText,
-                    icon: 'error',
-                    confirmButtonText: 'OK!'
-                })
-            } else {
-                //alert("Accepted")
-                Swal.fire({
-                    title: 'Accepted',
-                    text: decodedText,
-                    icon: 'success',
-                    confirmButtonText: 'OK!'
-                })
-
-            }
 
             // if (decodedText !== lastResult) {
             //     ++countResults;
