@@ -53,10 +53,8 @@
 
             xhr.send();
 
-            alert(xhr.responseText)
-
             if (responseText == 0) {
-                alert("Reject")
+                //alert("Reject")
                 Swal.fire({
                     title: 'Reject',
                     text: decodedText,
@@ -64,7 +62,7 @@
                     confirmButtonText: 'OK!'
                 })
             } else {
-                alert("Accepted")
+                //alert("Accepted")
                 Swal.fire({
                     title: 'Accepted',
                     text: decodedText,
