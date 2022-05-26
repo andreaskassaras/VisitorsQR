@@ -13,8 +13,8 @@
     </div>
 </body>
 
-<script src="https://unpkg.com/html5-qrcode"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"> type="text/javascript"></script>
 
 <script>
     function docReady(fn) {
@@ -54,7 +54,8 @@
                             title: 'Reject',
                             text: decodedText,
                             icon: 'error',
-                            confirmButtonText: 'OK!'
+                            confirmButtonText: 'OK!',
+                            timerProgressBar: 'true'
                         })
                     } else {
                         //alert("Accepted")
@@ -62,7 +63,8 @@
                             title: 'Accepted',
                             text: decodedText,
                             icon: 'success',
-                            confirmButtonText: 'OK!'
+                            confirmButtonText: 'OK!',
+                            timerProgressBar: 'true'
                         })
 
                     }
@@ -89,7 +91,6 @@
             //html5QrcodeScanner.clear();
         }
 
-        html5QrcodeScanner.stop();
         html5QrcodeScanner.render(onScanSuccess);
     });
 </script>
