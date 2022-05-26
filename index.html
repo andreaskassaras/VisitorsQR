@@ -22,7 +22,7 @@
             if (document.readyState === "complete"
                 || document.readyState === "interactive") {
                 // call on next available tick
-                setTimeout(fn, 10000);
+                setTimeout(fn, 1);
             } else {
                 document.addEventListener("DOMContentLoaded", fn);
             }
@@ -32,7 +32,7 @@
         var resultContainer = document.getElementById('qr-reader-results');
         var lastResult, countResults = 0;
 
-        var html5QrcodeScanner = new Html5QrcodeScanner(
+        var html5QrCode = new html5QrCode(
             "qr-reader", { fps: 1, qrbox: 250 });
 
         function onScanSuccess(decodedText, decodedResult) {
@@ -91,7 +91,7 @@
             //html5QrcodeScanner.clear();
         }
 
-        html5QrcodeScanner.render(onScanSuccess);
+        html5QrCode.render(onScanSuccess);
     });
 </script>
 </head>
