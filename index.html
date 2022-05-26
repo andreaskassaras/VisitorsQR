@@ -30,7 +30,7 @@
     docReady(function () {
         var resultContainer = document.getElementById('qr-reader-results');
         var lastResult, countResults = 0;
-        var responseText, name, surname;
+        var responseText;
         function onScanSuccess(decodedText, decodedResult) {
 
             var url = "https://api.konkat.gr/get_visitor/" + decodedText;
@@ -43,13 +43,15 @@
                     console.log(xhr.status);
                     console.log(xhr.responseText);
                     responseText = xhr.responseText;
-                    var obj = JSON.parse(responseText);
-                    alert(obj.Name);
                 }
 
             };
 
             xhr.send();
+
+            if (responseText === "0") {
+                console.log("###############  No Visitor  ###############")
+            }
 
             if (decodedText !== lastResult) {
                 ++countResults;
