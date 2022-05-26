@@ -30,7 +30,7 @@
     docReady(function () {
         var resultContainer = document.getElementById('qr-reader-results');
         var lastResult, countResults = 0;
-        var responseText = "";
+        var responseText = 0;
 
         var html5QrcodeScanner = new Html5QrcodeScanner(
             "qr-reader", { fps: 1, qrbox: 250 });
