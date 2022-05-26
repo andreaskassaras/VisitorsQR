@@ -6,7 +6,7 @@
 
 <body>
     <div class="flex-container">
-        <div class="row">
+        <div>
             <div id="qr-reader" style="width:500px"></div>
             <div id="qr-reader-results"></div>
         </div>
@@ -51,34 +51,34 @@
 
             if (responseText === "0") {
                 Swal.fire({
-                    title: decodedText,
-                    text: 'You code is ' + responseText,
-                    icon: 'success',
+                    title: 'Reject',
+                    text: decodedText,
+                    icon: 'error',
                     confirmButtonText: 'OK!'
                 })
             } else {
                 Swal.fire({
-                    title: 'Δεκτό',
-                    text: 'Ο επισκέπτης με τον αριθμό ' + decodedText + ' έχει ραντεβού σήμερα',
+                    title: 'Accepted',
+                    text: decodedText,
                     icon: 'success',
                     confirmButtonText: 'OK!'
                 })
 
             }
 
-            // if (decodedText !== lastResult) {
-            //     ++countResults;
-            //     lastResult = decodedText;
-            //     // Handle on success condition with the decoded message.
-            //     console.log(`Scan result ${decodedText}`, decodedResult);
+            if (decodedText !== lastResult) {
+                ++countResults;
+                lastResult = decodedText;
+                // Handle on success condition with the decoded message.
+                console.log(`Scan result ${decodedText}`, decodedResult);
 
-            //     Swal.fire({
-            //         title: decodedText,
-            //         text: 'You code is ' + responseText,
-            //         icon: 'success',
-            //         confirmButtonText: 'OK!'
-            //     })
-            // }
+                Swal.fire({
+                    title: decodedText,
+                    text: 'You code is ' + responseText,
+                    icon: 'success',
+                    confirmButtonText: 'OK!'
+                })
+            }
         }
 
         var html5QrcodeScanner = new Html5QrcodeScanner(
