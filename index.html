@@ -32,7 +32,7 @@
         var resultContainer = document.getElementById('qr-reader-results');
         var lastResult, countResults = 0;
 
-        var html5QrCode = new html5QrCode(
+        var html5QrcodeScanner = new Html5QrcodeScanner(
             "qr-reader", { fps: 1, qrbox: 250 });
 
         function onScanSuccess(decodedText, decodedResult) {
@@ -91,7 +91,7 @@
             //html5QrcodeScanner.clear();
         }
 
-        html5QrCode.render(onScanSuccess);
+        html5QrcodeScanner.render(onScanSuccess);
     });
 </script>
 </head>
