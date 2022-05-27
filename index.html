@@ -60,9 +60,10 @@
                   confirmButtonColor: "#198754",
                 });
               } else {
-                //alert("Accepted")
+                var visitor = require(xhr.responseText);
+
                 Swal.fire({
-                  title: "Accepted",
+                  title: "Accepted" + visitor.Name,
                   text: decodedText,
                   icon: "success",
                   confirmButtonText: "OK!",
