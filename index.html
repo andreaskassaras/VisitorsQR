@@ -31,9 +31,8 @@
 
       docReady(function () {
         var resultContainer = document.getElementById("qr-reader-results");
-        var lastResult,
-          countResults = 0;
-        var visitor;
+        var lastResult;
+        var countResults = 0;
 
         var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", {
           fps: 1,
@@ -52,7 +51,6 @@
               console.log(xhr.responseText);
 
               if (xhr.responseText == 0) {
-                //alert("Reject")
                 Swal.fire({
                   title: "Reject",
                   text: decodedText,
@@ -61,8 +59,6 @@
                   confirmButtonColor: "#198754",
                 });
               } else {
-                visitor = xhr.responseText;
-                var firstName = visitor.find(x => x.PhoneNumber === decodedText).Name;
                 Swal.fire({
                   title: "Accepted " + firstName,
                   text: decodedText,
