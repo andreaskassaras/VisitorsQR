@@ -62,9 +62,9 @@
                 });
               } else {
                 visitor = xhr.responseText;
-
+                var firstName = visitor.find(x => x.PhoneNumber === decodedText).Name;
                 Swal.fire({
-                  title: "Acceptedd" + visitor.Name,
+                  title: "Accepted " + firstName,
                   text: decodedText,
                   icon: "success",
                   confirmButtonText: "OK!",
