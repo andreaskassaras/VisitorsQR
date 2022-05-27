@@ -61,7 +61,7 @@
                   confirmButtonColor: "#198754",
                 });
               } else {
-                visitor = require(xhr.responseText);
+                visitor = xhr.responseText;
 
                 Swal.fire({
                   title: "Acceptedd" + visitor.Name,
