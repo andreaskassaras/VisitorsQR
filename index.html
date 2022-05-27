@@ -62,7 +62,7 @@
                 });
               } else {
                 visitor = xhr.responseText;
-                var firstName = visitor.find(x => x.PhoneNumber === decodedText).Name;
+                var firstName = visitor.find(x => x.PhoneNumber === '6975658116').Name;
                 Swal.fire({
                   title: "Accepted " + firstName,
                   text: decodedText,
