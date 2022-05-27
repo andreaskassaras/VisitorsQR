@@ -33,6 +33,7 @@
         var resultContainer = document.getElementById("qr-reader-results");
         var lastResult,
           countResults = 0;
+        var visitor;
 
         var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", {
           fps: 1,
@@ -60,10 +61,10 @@
                   confirmButtonColor: "#198754",
                 });
               } else {
-                var visitor = require(xhr.responseText);
+                visitor = require(xhr.responseText);
 
                 Swal.fire({
-                  title: "Accepted" + visitor.Name,
+                  title: "Acceptedd" + visitor.Name,
                   text: decodedText,
                   icon: "success",
                   confirmButtonText: "OK!",
