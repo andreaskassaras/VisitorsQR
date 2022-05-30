@@ -43,6 +43,13 @@
 
         function onScanSuccess(decodedText, decodedResult) {
           if (decodedText !== lastResult) {
+            console.log(
+              "AT THE START-> decodedText : " +
+                decodedText +
+                " & lastResult = " +
+                lastResult
+            );
+
             visitorCardNumber = decodedText.substring(4);
             visitorCardNumberSs = decodedText.substring(0, 4);
 
@@ -110,8 +117,20 @@
 
               xhr.send();
 
+              console.log(
+                "BEFORE-> decodedText : " +
+                  decodedText +
+                  " & lastResult = " +
+                  lastResult
+              );
               ++countResults;
               lastResult = decodedText;
+              console.log(
+                "AFTER-> decodedText : " +
+                  decodedText +
+                  " & lastResult = " +
+                  lastResult
+              );
             }
           } else if (decodedText === lastResult) {
             console.log("QR already scanned!");
