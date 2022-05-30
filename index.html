@@ -32,7 +32,8 @@
       docReady(function () {
         var resultContainer = document.getElementById("qr-reader-results");
         var lastResult;
-        var vcnCheck;
+        var visitorCardNumber;
+        var visitorCardNumberSs;
         var countResults = 0;
 
         var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", {
@@ -45,13 +46,43 @@
             ++countResults;
             lastResult = decodedText;
 
-            vcnCheck = decodedText.substring(0, 4);
+            visitorCardNumber = decodedText.substring(4);
+            visitorCardNumberSs = decodedText.substring(0, 4);
 
-            if (vcnCheck === "vcn:") {
-              console.log("VISITORS CARD NUMBER");
+            if (visitorCardNumberSs === "vcn:") {
+              var url =
+                "https://api.konkat.gr/edit_visit/" +
+                lastResult +
+                "/" +
+                visitorCardNumber;
+
+              var xhr = new XMLHttpRequest();
+              xhr.open("POST", url);
+
+              xhr.setRequestHeader("Content-Type", "application/json");
+              xhr.setRequestHeader("Content-Length", "0");
+
+              xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                  console.log(xhr.status);
+                  console.log(xhr.responseText);
+
+                  Swal.fire({
+                    title: "Finished",
+                    text: decodedText,
+                    icon: "success",
+                    confirmButtonText: "OK!",
+                    confirmButtonColor: "#198754",
+                  });
+                }
+              };
+
+              xhr.send();
+
+              console.log("Set Card Number");
               console.log(vcnCheck);
             } else {
-              var url = "https://api.konkat.gr/get_visitor/" + decodedText;
+              var url = "https://api.konkat.gr/get_visit/" + decodedText;
 
               var xhr = new XMLHttpRequest();
               xhr.open("GET", url);
