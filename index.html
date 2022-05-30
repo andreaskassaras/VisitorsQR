@@ -116,25 +116,12 @@
               };
 
               xhr.send();
-
-              console.log(
-                "BEFORE-> decodedText : " +
-                  decodedText +
-                  " & lastResult = " +
-                  lastResult
-              );
-              ++countResults;
-              lastResult = decodedText;
-              console.log(
-                "AFTER-> decodedText : " +
-                  decodedText +
-                  " & lastResult = " +
-                  lastResult
-              );
             }
           } else if (decodedText === lastResult) {
             console.log("QR already scanned!");
           }
+          ++countResults;
+          lastResult = decodedText;
         }
 
         html5QrcodeScanner.render(onScanSuccess);
