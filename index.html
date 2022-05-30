@@ -27,7 +27,7 @@
           if (xhr.readyState === 4) {
             console.log(xhr.status);
             console.log(xhr.responseText);
-            responseText = xhr.responseText;
+            responseText = JSON.parse(xhr.responseText);
           }
         };
 
