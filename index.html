@@ -43,16 +43,7 @@
           if (decodedText !== lastResult) {
             ++countResults;
             lastResult = decodedText;
-            // Handle on success condition with the decoded message.
-            console.log(`Scan result ${decodedText}`, decodedResult);
 
-            Swal.fire({
-              title: decodedText,
-              text: "You code is " + responseText,
-              icon: "success",
-              confirmButtonText: "OK!",
-            });
-          } else {
             var url = "https://api.konkat.gr/get_visitor/" + decodedText;
 
             var xhr = new XMLHttpRequest();
@@ -84,9 +75,9 @@
             };
 
             xhr.send();
+          } else if (decodedText === lastResult) {
+            console.log("TESTTTTTTT");
           }
-
-          //html5QrcodeScanner.clear();
         }
 
         html5QrcodeScanner.render(onScanSuccess);
