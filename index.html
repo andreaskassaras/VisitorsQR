@@ -16,6 +16,25 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
+      function getVisit(visitId) {
+        var responseText;
+        var url = "https://api.konkat.gr/get_visit/" + visitId;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+            responseText = xhr.responseText;
+          }
+        };
+
+        xhr.send();
+        return responseText;
+      }
+
       function docReady(fn) {
         // see if DOM is already available
         if (
@@ -54,7 +73,10 @@
             visitorCardNumberSs = decodedText.substring(0, 4);
 
             if (visitorCardNumberSs === "vcn:") {
-              var url =
+
+              if (getVisit(lastResult) != 0 ){
+
+                var url =
                 "https://api.konkat.gr/edit_visit/" +
                 lastResult +
                 "/" +
@@ -84,6 +106,10 @@
               xhr.send();
 
               console.log("Set Card Number");
+              }else{
+                console.log("Issue with lastResult");
+              }
+              
             } else {
               var url = "https://api.konkat.gr/get_visit/" + decodedText;
 
