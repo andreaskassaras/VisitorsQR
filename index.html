@@ -43,9 +43,6 @@
 
         function onScanSuccess(decodedText, decodedResult) {
           if (decodedText !== lastResult) {
-            ++countResults;
-            lastResult = decodedText;
-
             visitorCardNumber = decodedText.substring(4);
             visitorCardNumberSs = decodedText.substring(0, 4);
 
@@ -117,6 +114,9 @@
           } else if (decodedText === lastResult) {
             console.log("QR already scanned!");
           }
+
+          ++countResults;
+          lastResult = decodedText;
         }
 
         html5QrcodeScanner.render(onScanSuccess);
