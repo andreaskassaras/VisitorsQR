@@ -32,6 +32,7 @@
       docReady(function () {
         var resultContainer = document.getElementById("qr-reader-results");
         var lastResult;
+        var vcnCheck;
         var countResults = 0;
 
         var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", {
@@ -76,7 +77,16 @@
 
             xhr.send();
           } else if (decodedText === lastResult) {
-            console.log("TESTTTTTTT");
+            console.log("QR already scanned!");
+          }
+
+          vcnCheck = decodedText.substring(0, 4);
+
+          if (vcnCheck === "vnc:") {
+
+            console.log("VISITORS CARD NUMBER")
+            console.log(vcnCheck);
+
           }
         }
 
