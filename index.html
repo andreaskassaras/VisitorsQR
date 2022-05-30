@@ -45,48 +45,46 @@
             ++countResults;
             lastResult = decodedText;
 
-            var url = "https://api.konkat.gr/get_visitor/" + decodedText;
+            vcnCheck = decodedText.substring(0, 4);
 
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", url);
+            if (vcnCheck === "vnc:") {
+              console.log("VISITORS CARD NUMBER");
+              console.log(vcnCheck);
+            } else {
+              var url = "https://api.konkat.gr/get_visitor/" + decodedText;
 
-            xhr.onreadystatechange = function () {
-              if (xhr.readyState === 4) {
-                console.log(xhr.status);
-                console.log(xhr.responseText);
+              var xhr = new XMLHttpRequest();
+              xhr.open("GET", url);
 
-                if (xhr.responseText == 0) {
-                  Swal.fire({
-                    title: "Reject",
-                    text: decodedText,
-                    icon: "error",
-                    confirmButtonText: "OK!",
-                    confirmButtonColor: "#198754",
-                  });
-                } else {
-                  Swal.fire({
-                    title: "Accepted",
-                    text: decodedText,
-                    icon: "success",
-                    confirmButtonText: "OK!",
-                    confirmButtonColor: "#198754",
-                  });
+              xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                  console.log(xhr.status);
+                  console.log(xhr.responseText);
+
+                  if (xhr.responseText == 0) {
+                    Swal.fire({
+                      title: "Reject",
+                      text: decodedText,
+                      icon: "error",
+                      confirmButtonText: "OK!",
+                      confirmButtonColor: "#198754",
+                    });
+                  } else {
+                    Swal.fire({
+                      title: "Accepted",
+                      text: decodedText,
+                      icon: "success",
+                      confirmButtonText: "OK!",
+                      confirmButtonColor: "#198754",
+                    });
+                  }
                 }
-              }
-            };
+              };
 
-            xhr.send();
+              xhr.send();
+            }
           } else if (decodedText === lastResult) {
             console.log("QR already scanned!");
-          }
-
-          vcnCheck = decodedText.substring(0, 4);
-
-          if (vcnCheck === "vnc:") {
-
-            console.log("VISITORS CARD NUMBER")
-            console.log(vcnCheck);
-
           }
         }
 
